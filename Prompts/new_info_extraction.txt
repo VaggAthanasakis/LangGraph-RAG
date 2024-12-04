@@ -1,0 +1,14 @@
+prompt = f"""
+Please extract the following details from the provided vector store index:
+
+Shipper: (Extract name after keyword "Shipper" or "Shipper name" or "Exporter")
+CONSIGNEE: (Extract name after keyword "Consignee" or "Consignee name")
+Document number: (Extract number (if exists) after keyword "Document number", "Doc No", or any reference to document number)
+B/L Number: (Extract number (if exists) after "B/L Number" or "Bill of Lading Number")
+Type of Cargo: (Extract type of cargo, such as containers, boxes, etc.)
+Total Weight: (Extract weight, look for keywords like "Total weight" or "Gross weight")
+
+
+After that, convert the output into json format.
+
+"""
