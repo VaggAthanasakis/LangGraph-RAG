@@ -9,6 +9,6 @@ Type of Cargo: (Extract type of cargo, such as containers, boxes, etc.)
 Total Weight: (Extract weight, look for keywords like "Total weight" or "Gross weight")
 
 
-At the end, when you find ALL the above info, convert the output into json format.
+At the end, when you find ALL the above info, convert the output into json format and then call the proper tool (store_json) to store it in a file.
 
 """

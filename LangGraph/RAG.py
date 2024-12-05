@@ -17,7 +17,6 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 
 
-
 def display_graph(graph):
     image_data = graph.get_graph().draw_mermaid_png()
     image = PILImage.open(BytesIO(image_data))
@@ -47,7 +46,7 @@ embed_model = HuggingFaceEmbedding('paraphrase-multilingual-MiniLM-L12-v2')
 
 splitter = SentenceSplitter(chunk_size=700)
 
-llm = ChatOllama(model="llama3.1:8b", temperature = 0)
+llm = ChatOllama(model="llama3.1:70b", temperature = 0)
 
 Settings.llm = llm
 Settings.embed_model = embed_model
@@ -75,31 +74,28 @@ def query_tool(query: str):
 
 
 @tool
-def create_json_tool(response: str):
+def store_json(response):
     """
-    Create a json response from the input if you are asked to.
-
+    Stores the json text into a file.
     """
-    dict_string = json.loads(str(response))
-    json_string = json.dumps(dict_string)
+    # dict_string = json.loads(str(response))
+    # json_string = json.dumps(dict_string)
 
     # store it in a file
     output_json_file = os.path.join(current_dir, "outputs/json_output.txt")
     with open(output_json_file, 'w', encoding='utf-8') as file:
-            return file.write(json_string)  
+            return file.write(response)  
 
-    return json_string
-
-
+    #return json_string
 
 
-tools = [query_tool, create_json_tool]
+
+tools = [query_tool, store_json]
 
 llm_with_tools = llm.bind_tools(tools)
 
 sys_msg = SystemMessage(content="You are a helpful assistant tasked with responding to general questions \
-                        and performing RAG using indexing in the a vector store index. \
-                        Use tools only if you have to.")
+                        and performing RAG using indexing in the a vector store index.")
 
 
 # Node

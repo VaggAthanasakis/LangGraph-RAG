@@ -1,0 +1,1 @@
+{"Shipper": "SKYSEALAND SHIPPING LINES", "Consignee": "ARIAN MARITIME S.A", "Document number": "21072800108", "B/L Number": "STFL21072190", "Type of Cargo": "USED SHIP SPARE PARTS", "Total Weight": "7800.00 KGS"}
